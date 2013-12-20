@@ -1,0 +1,11 @@
+{
+  "name": "js-dom-tools",
+  "version": "0.1",
+  "authors": [
+    "Maxime Alexandre <maxime.alexandre@mobile-spot.com>"
+  ],
+  "description": "JavaScript DOM tools library",
+  "main": "src/js-dom-tools.js",
+  "license": "MIT",
+  "homepage": "https://github.com/mysegfault/js-dom-tools"
+}
