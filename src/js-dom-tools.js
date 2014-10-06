@@ -1,6 +1,7 @@
 /*
  * JavaScript DOM tools library
- * 2013-12-20
+ * 2014-10-06
+ * v0.1.3
  *
  * By mysegfault <maxime.alexandre@mobile-spot.com>, https://github.com/mysegfault/js-dom-tools
  * 
