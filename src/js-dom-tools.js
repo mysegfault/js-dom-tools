@@ -234,6 +234,8 @@ define([], function() {
 		var tag = document.createElement('img');
 		tag.src = src;
 		tag.async = true;
+		tag.style.visibility = 'hidden';
+		tag.style.position = 'absolute';
 		if (typeof id === 'string' && isEmpty(id) === false) {
 			tag.id = id;
 		}
