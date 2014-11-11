@@ -203,6 +203,18 @@ define([], function() {
 		}
 		return width;
 	}
+	
+	function removeElement(element) {
+		if (isEmpty(element) === true) {
+			return;
+		}
+		var parent = element.parentNode;
+		if (isEmpty(parent) === true) {
+			console.error('This item has not parent', element, ' so it cannot be removed.');
+			return;
+		}
+		parent.removeChild(element);
+	}
 
 	return {
 		loadAsyncScript: loadAsyncScript,
@@ -214,6 +226,7 @@ define([], function() {
 		getOffsetSum: getOffsetSum,
 		isEmpty: isEmpty,
 		getItemHeight: getItemHeight,
-		getItemWidth: getItemWidth
+		getItemWidth: getItemWidth,
+		removeElement: removeElement
 	};
 });
