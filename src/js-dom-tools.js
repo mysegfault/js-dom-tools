@@ -18,7 +18,7 @@ define([], function() {
 		var tag = document.createElement('script');
 		tag.src = src;
 		tag.async = true;
-		if (typeof id === 'string') {
+		if (typeof id === 'string' && isEmpty(id) === false) {
 			tag.id = id;
 		}
 
@@ -216,6 +216,28 @@ define([], function() {
 		parent.removeChild(element);
 	}
 
+	function loadAsyncImage(src, id, callback) {
+		if (typeof src !== 'string') {
+			console.error('src parameter is invalid: [' + src + ']');
+			return;
+		}
+		var tag = document.createElement('img');
+		tag.src = src;
+		tag.async = true;
+		if (typeof id === 'string' && isEmpty(id) === false) {
+			tag.id = id;
+		}
+
+		if (typeof callback === 'function') {
+			tag.addEventListener('load', function load(event) {
+				tag.removeEventListener('load', load, false);
+				callback(event);
+			}, false);
+		}
+		
+		document.body.appendChild(tag);
+	}
+
 	return {
 		loadAsyncScript: loadAsyncScript,
 		loadAsyncCss: loadAsyncCss,
@@ -227,6 +249,7 @@ define([], function() {
 		isEmpty: isEmpty,
 		getItemHeight: getItemHeight,
 		getItemWidth: getItemWidth,
-		removeElement: removeElement
+		removeElement: removeElement,
+		loadAsyncImage: loadAsyncImage
 	};
 });
