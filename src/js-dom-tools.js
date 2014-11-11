@@ -8,6 +8,14 @@
  * MIT Licence
  */
 
+require.config({
+	map: {
+		'*': {
+			'css': 'require-css/css'
+		}
+	}
+});
+
 define([], function() {
 
 	function loadAsyncScript(src, id, callback) {
@@ -43,9 +51,29 @@ define([], function() {
 		tag.async = true;
 
 		if (typeof callback === 'function') {
-			tag.addEventListener("load", function load(event) {
-				tag.removeEventListener("load", load, false);
-				callback(event);
+			var called = false;
+
+			require(['css!' + src], function() {
+				if (called === false) {
+					called = true;
+					callback(event);
+				}
+			});
+
+			tag.onload = function() {
+				if (called === false) {
+					called = true;
+					callback(event);
+				}
+				tag.onload = null;
+			};
+			
+			tag.addEventListener('load', function load(event) {
+				if (called === false) {
+					called = true;
+					callback(event);
+				}
+				tag.removeEventListener('load', load, false);
 			}, false);
 		}
 
