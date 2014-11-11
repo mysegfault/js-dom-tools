@@ -7,5 +7,6 @@
   "description": "JavaScript DOM tools library",
   "main": "src/js-dom-tools.js",
   "license": "MIT",
-  "homepage": "https://github.com/mysegfault/js-dom-tools"
+  "homepage": "https://github.com/mysegfault/js-dom-tools",
+  "ignore": ["tests"]
 }

@@ -1,12 +1,17 @@
 js-dom-tools
 ============
 
-JavaScript DOM tools library
+JavaScript DOM tools library: collection of useful simple functions for interacting with the DOM
+
+Vanilla JS
 
 RequireJS AMD module
 
+Mobile Ready : tested on Android 2.3, 4 + iOS 6, 8
 
-features
+Please test and report / fix if you see any "KO" in the test page
+
+Features
 ========
 
 * loadAsyncScript(src, id, callback)
