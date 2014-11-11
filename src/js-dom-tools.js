@@ -159,6 +159,16 @@ define([], function() {
 		if (typeof data === 'string' && data.trim() === '') {
 			return true;
 		}
+
+		// if it's a DOM element, returns true because not null
+		// needed for iOS
+		if (typeof data === 'object' && isDOMElement(data) === true) {
+			return false;
+		}
+		if (typeof data === 'object' && Object.getOwnPropertyNames(data).length === 0) {
+			return true;
+		}
+
 		return false;
 	}
 
@@ -203,7 +213,7 @@ define([], function() {
 		}
 		return width;
 	}
-	
+
 	function removeElement(element) {
 		if (isEmpty(element) === true) {
 			return;
@@ -234,8 +244,24 @@ define([], function() {
 				callback(event);
 			}, false);
 		}
-		
+
 		document.body.appendChild(tag);
+	}
+
+	// see http://stackoverflow.com/questions/384286/javascript-isdom-how-do-you-check-if-a-javascript-object-is-a-dom-object
+	function isDOMElement(obj) {
+		try {
+			//Using W3 DOM2 (works for FF, Opera and Chrom)
+			return obj instanceof HTMLElement;
+		}
+		catch (e) {
+			//Browsers not supporting W3 DOM2 don't have HTMLElement and
+			//an exception is thrown and we end up here. Testing some
+			//properties that all elements have. (works on IE7)
+			return (typeof obj === "object") &&
+				(obj.nodeType === 1) && (typeof obj.style === "object") &&
+				(typeof obj.ownerDocument === "object");
+		}
 	}
 
 	return {
@@ -250,6 +276,8 @@ define([], function() {
 		getItemHeight: getItemHeight,
 		getItemWidth: getItemWidth,
 		removeElement: removeElement,
-		loadAsyncImage: loadAsyncImage
+		loadAsyncImage: loadAsyncImage,
+		isDOMElement: isDOMElement
 	};
+
 });
