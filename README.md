@@ -9,7 +9,7 @@ RequireJS AMD module
 
 Mobile Ready : tested on Android 2.3, 4 + iOS 6, 8
 
-Please test and report / fix if you see any "KO" in the test page
+[Please test and report / fix if you see any "KO" in the test page](https://cdn.rawgit.com/mysegfault/js-dom-tools/master/tests/index.html)
 
 Features
 ========
