@@ -45,39 +45,38 @@ define([], function() {
 			console.error('src parameter is invalid: [' + src + ']');
 			return;
 		}
-		var tag = document.createElement('link');
-		tag.rel = 'stylesheet';
-		tag.href = src;
-		tag.async = true;
 
-		if (typeof callback === 'function') {
-			var called = false;
+		require(['css!' + src], function() {
+			if (typeof callback === 'function') {
+				callback();
+			}
+		});
 
-			require(['css!' + src], function() {
-				if (called === false) {
-					called = true;
-					callback(event);
-				}
-			});
+//		var tag = document.createElement('link');
+//		tag.rel = 'stylesheet';
+//		tag.href = src;
+//		tag.async = true;
 
-			tag.onload = function() {
-				if (called === false) {
-					called = true;
-					callback(event);
-				}
-				tag.onload = null;
-			};
-			
-			tag.addEventListener('load', function load(event) {
-				if (called === false) {
-					called = true;
-					callback(event);
-				}
-				tag.removeEventListener('load', load, false);
-			}, false);
-		}
+//		if (typeof callback === 'function') {
+//			var called = false;
+//			tag.onload = function() {
+//				if (called === false) {
+//					called = true;
+//					callback(event);
+//				}
+//				tag.onload = null;
+//			};
 
-		document.head.appendChild(tag);
+//			tag.addEventListener('load', function load(event) {
+//				if (called === false) {
+//					called = true;
+//					callback(event);
+//				}
+//				tag.removeEventListener('load', load, false);
+//			}, false);
+//		}
+
+//		document.head.appendChild(tag);
 	}
 
 	function findParentNodeWithNodeName(element, nodeName) {
