@@ -204,9 +204,15 @@ define([], function() {
 			console.error('getItemHeight: item is invalid', element);
 			return 0;
 		}
-		var cs = window.getComputedStyle(element, null);
-		if (isEmpty(cs) === true) {
-			console.error('Could not get getComputedStyle of ', element);
+		try {
+			var cs = window.getComputedStyle(element, null);
+		}
+		catch (error) {
+			console.error('Could not get getComputedStyle of ', element, error);
+			return 0;
+		}
+		if (typeof cs.height !== 'string') {
+			console.error('Could not get getComputedStyle of ', element, cs);
 			return 0;
 		}
 		if (cs.height === 'auto') {
@@ -225,9 +231,15 @@ define([], function() {
 			console.error('getItemHeight: item is invalid', element);
 			return 0;
 		}
-		var cs = window.getComputedStyle(element, null);
-		if (isEmpty(cs) === true) {
-			console.error('Could not get getComputedStyle of ', element);
+		try {
+			var cs = window.getComputedStyle(element, null);
+		}
+		catch (error) {
+			console.error('Could not get getComputedStyle of ', element, error);
+			return 0;
+		}
+		if (typeof cs.height !== 'string') {
+			console.error('Could not get getComputedStyle of ', element, cs);
 			return 0;
 		}
 		if (cs.width === 'auto') {
