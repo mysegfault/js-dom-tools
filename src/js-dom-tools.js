@@ -143,7 +143,7 @@ define([], function() {
 		}
 	}
 
-	function objectTotalLength(object) {
+	function objectTotalLength(object, onlyFirstLevel) {
 
 		if (typeof object !== 'object') {
 			console.error('objectTotalLength: object is not an object. ', object);
@@ -159,7 +159,16 @@ define([], function() {
 
 		var totalLength = 0;
 		for (var i in object) {
-			totalLength += objectTotalLength(object[i]);
+			if (object.hasOwnProperty(i) === false) {
+				continue;
+			}
+
+			if (onlyFirstLevel === true) {
+				totalLength += 1;
+			}
+			else {
+				totalLength += objectTotalLength(object[i]);
+			}
 		}
 		return totalLength;
 	}
