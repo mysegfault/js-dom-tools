@@ -208,7 +208,7 @@ define([], function() {
 		return false;
 	}
 
-	function getItemHeight(element) {
+	function getItemHeight(element, includePadding) {
 		if (typeof element === 'undefined' || element === null) {
 			console.error('getItemHeight: item is invalid', element);
 			return 0;
@@ -232,9 +232,26 @@ define([], function() {
 			console.error('getItemHeight: item height is invalid', element);
 			height = 0;
 		}
+
+		// include padding by default
+		if (includePadding === false) {
+			return height;
+		}
+
+		var paddingHeightTop = parseInt(cs.paddingTop.replace('px', ''));
+		if (isNaN(paddingHeightTop) === false) {
+			height += paddingHeightTop;
+		}
+
+		var paddingHeightBottom = parseInt(cs.paddingBottom.replace('px', ''));
+		if (isNaN(paddingHeightBottom) === false) {
+			height += paddingHeightBottom;
+		}
+		
 		return height;
 	}
 
+	// TODO: also include padding ?
 	function getItemWidth(element) {
 		if (typeof element === 'undefined' || element === null) {
 			console.error('getItemHeight: item is invalid', element);
