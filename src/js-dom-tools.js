@@ -1,9 +1,9 @@
 /*
  * JavaScript DOM tools library
- * 2015-04-21
- * v0.1.8
+ * 2016-07-13
+ * v0.1.9
  *
- * By mysegfault <maxime.alexandre@mobile-spot.com>, https://github.com/mysegfault/js-dom-tools
+ * By mysegfault <mysegfault@wininup.com>, https://github.com/mysegfault/js-dom-tools
  * 
  * MIT Licence
  */
@@ -201,6 +201,13 @@ define([], function() {
 		if (typeof data === 'object' && isDOMElement(data) === true) {
 			return false;
 		}
+
+		// if it's an object with a specific contructor (ex: XMLHttpRequest)
+		// we assume it's not empty
+		if (typeof data === 'object' && typeof data.constructor === 'function') {
+			return false;
+		}
+
 		if (typeof data === 'object' && Object.getOwnPropertyNames(data).length === 0) {
 			return true;
 		}
