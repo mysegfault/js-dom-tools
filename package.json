@@ -14,6 +14,8 @@
   ],
   "author": "Maxime Alexandre (https://github.com/mysegfault)",
   "license": "MIT",
+  "homepage": "https://github.com/mysegfault/js-dom-tools",
+  "ignore": ["tests"],
   "bugs": {
     "url": "https://github.com/mysegfault/js-dom-tools/issues"
   }

@@ -1,12 +1,22 @@
 {
   "name": "js-dom-tools",
   "version": "0.1.9",
-  "authors": [
-    "Maxime Alexandre <maxime.alexandre@mobile-spot.com>"
-  ],
-  "description": "JavaScript DOM tools library",
+  "description": "JavaScript DOM tools library: collection of useful simple functions for interacting with the DOM",
   "main": "src/js-dom-tools.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mysegfault/js-dom-tools"
+  },
+  "keywords": [
+    "javascript",
+    "dom",
+    "tools"
+  ],
+  "author": "Maxime Alexandre (https://github.com/mysegfault)",
   "license": "MIT",
   "homepage": "https://github.com/mysegfault/js-dom-tools",
-  "ignore": ["tests"]
+  "ignore": ["tests"],
+  "bugs": {
+    "url": "https://github.com/mysegfault/js-dom-tools/issues"
+  }
 }
