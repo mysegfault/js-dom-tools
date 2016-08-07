@@ -1,0 +1,20 @@
+{
+  "name": "js-dom-tools",
+  "version": "0.1.9",
+  "description": "JavaScript DOM tools library: collection of useful simple functions for interacting with the DOM",
+  "main": "src/js-dom-tools.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mysegfault/js-dom-tools"
+  },
+  "keywords": [
+    "javascript",
+    "dom",
+    "tools"
+  ],
+  "author": "Maxime Alexandre (https://github.com/mysegfault)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mysegfault/js-dom-tools/issues"
+  }
+}
